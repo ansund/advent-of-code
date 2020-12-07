@@ -22,7 +22,19 @@ const formatData = (data) => {
       arrayCount = 0;
     }
   }
+  return [groupsArray, groups];
+};
 
+const part1 = (groups) => {
+  uniqueYes = 0;
+  groups.forEach((group) => {
+    let lol = new Set(group);
+    uniqueYes += String.prototype.concat(...new Set(group)).length;
+  });
+  return uniqueYes;
+};
+
+const part2 = (groups) => {
   let allYes = 0;
   groups.forEach((group) => {
     let yeses = {};
@@ -37,27 +49,7 @@ const formatData = (data) => {
       if (yeses[yesCount] === group.length) allYes += 1;
     });
   });
-  console.log("Day 6, part 2: ", allYes);
-
-  return groupsArray;
-};
-
-const part1 = (groups) => {
-  uniqueYes = 0;
-  groups.forEach((group) => {
-    let lol = new Set(group);
-    uniqueYes += String.prototype.concat(...new Set(group)).length;
-  });
-  return uniqueYes;
-};
-
-const part2 = (groups) => {
-  uniqueYes = 0;
-  groups.forEach((group) => {
-    let lol = new Set(group);
-    uniqueYes += String.prototype.concat(...new Set(group)).length;
-  });
-  return uniqueYes;
+  return allYes;
 };
 
 const day6 = () => {
@@ -65,8 +57,8 @@ const day6 = () => {
   let data = fs.readFileSync("./src/day06/data.txt").toString().split("\n");
   const groups = formatData(data);
 
-  console.log("Day 6, part 1: ", part1(groups));
-  // console.log("Day 6, part 2: ", Object.keys(checkGroupsPart2(groups)).length);
+  console.log("Day 6, part 1: ", part1(groups[0]));
+  console.log("Day 6, part 2: ", part2(groups[1]));
 };
 
 day6();

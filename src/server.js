@@ -9,3 +9,5 @@ require("./day03/day03");
 require("./day04/day04");
 
 require("./day05/day05");
+
+require("./day06/day06");
